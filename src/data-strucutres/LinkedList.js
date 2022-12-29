@@ -9,6 +9,11 @@ class LinkedList {
         return this;
     }
 
+    remove() {
+        this.head = this.head.next;
+        return this;
+    }
+
     getAllNodes() {
         const nodes = [];
         let node = this.head;

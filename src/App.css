@@ -7,6 +7,15 @@
   height: 100%;
 }
 
+.linked-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
 .linked-list {
   display: flex;
   flex-direction: row;
@@ -51,6 +60,16 @@
   justify-content: center;
 
   border-style: solid;
+}
+
+.add-node {
+  font-size: x-large;
+  width: 20%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .arrow {

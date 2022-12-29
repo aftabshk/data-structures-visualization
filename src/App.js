@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import LinkedListView from "./components/LinkedListView";
 
 function App() {
