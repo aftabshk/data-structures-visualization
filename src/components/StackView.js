@@ -1,6 +1,7 @@
 import {Component} from "react";
 import Stack from "../data-strucutres/Stack";
 import StackFrameView from "./StackFrameView";
+import Button from "react-bootstrap/Button";
 
 class StackView extends Component {
 
@@ -22,16 +23,30 @@ class StackView extends Component {
     }
 
     popFromStack() {
-        this.setState({stack: this.state.stack.pop()})
+        this.state.stack.pop();
+        this.setState({stack: this.state.stack})
     }
 
     render() {
-        const allElements = this.state ? this.state.stack.data.reverse() : [];
+        const allElements = this.state ? this.state.stack.getAllElements().reverse() : [];
 
-        if (allElements.length === 0) return <div></div>;
+        let stack = <div></div>;
+
+        if (allElements.length !== 0) {
+            stack = <div className={"stack"}>
+                {allElements.map((e) => <StackFrameView element={e}></StackFrameView>)}
+            </div>;
+        }
 
         return <div className={"stack-container"}>
-            {allElements.map((e) => <StackFrameView element={e}></StackFrameView>)}
+            {stack}
+            <div>
+                <div className={"add-node"}>
+                    <input type="text" placeholder="Enter element" onChange={this.handleChange.bind(this)}/>
+                    <Button variant="primary" onClick={this.pushToStack.bind(this)} type="submit">Push</Button>
+                </div>
+                <Button variant="primary" onClick={this.popFromStack.bind(this)} type="submit">Pop</Button>
+            </div>
         </div>
     }
 }

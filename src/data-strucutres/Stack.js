@@ -10,7 +10,14 @@ class Stack {
     }
 
     pop() {
-        return this.data[this.top--];
+        this.top--;
+        return this.data[this.top];
+    }
+
+    getAllElements() {
+        if (this.top < 0) return [];
+
+        return this.data.slice(0, this.top + 1)
     }
 }
 
