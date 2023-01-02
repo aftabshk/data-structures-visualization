@@ -1,8 +1,8 @@
 import {Component} from "react";
 import {LinkedList, Node} from "../data-strucutres/LinkedList";
 import LinkedListNodeView from "./LinkedListNodeView";
-import Xarrow from "react-xarrows";
 import Button from 'react-bootstrap/Button';
+import * as arrowLine from 'arrow-line';
 
 class LinkedListView extends Component {
 
@@ -18,6 +18,13 @@ class LinkedListView extends Component {
                 .insert(new Node(90))
                 .insert(new Node(80))
         });
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const length = this.state.linkedList.length();
+        for (let i = 0; i < length - 1; i++) {
+            arrowLine("#node" + i, "#node" + (i + 1));
+        }
     }
 
     handleChange(event) {
@@ -39,17 +46,7 @@ class LinkedListView extends Component {
 
         return <div className={"linked-list-container"}>
             <div className={"linked-list"}>
-                {nodes.reduce((acc, node, index) => {
-                    const newAcc = acc.concat(<LinkedListNodeView node={node} index={index}/>)
-
-                    if (index === 0 || index === nodes.length) return newAcc;
-
-                    const startIndex = "node" + (index - 1)
-                    const endIndex = "node" + index
-
-                    return newAcc.concat(<Xarrow
-                        start={startIndex} end={endIndex}/>);
-                }, [])}
+                {nodes.map((node, index) => <LinkedListNodeView node={node} index={index}/>)}
             </div>
             <div className={"add-node"}>
                 <input type="text" placeholder="Enter element" onChange={this.handleChange.bind(this)}/>

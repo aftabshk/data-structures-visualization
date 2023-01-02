@@ -7,9 +7,9 @@ import QueueView from "./components/QueueView";
 function App() {
   return (
     <div className="App">
-        {/*<LinkedListView className={".linked-list"}/>*/}
+        <LinkedListView className={".linked-list"}/>
         {/*<StackView/>*/}
-        <QueueView/>
+        {/*<QueueView/>*/}
     </div>
   );
 }

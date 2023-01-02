@@ -14,6 +14,10 @@ class LinkedList {
         return this;
     }
 
+    length() {
+        return this.getAllNodes().length;
+    }
+
     getAllNodes() {
         const nodes = [];
         let node = this.head;
