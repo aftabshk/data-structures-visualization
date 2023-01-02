@@ -62,14 +62,35 @@
   border-style: solid;
 }
 
-.add-node {
-  font-size: x-large;
-  width: 20%;
+.buttons-container {
+  width: 100%;
+  height: 35%;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.add-node {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+
+  font-size: 1.5em;
+
+  margin-left: 20px;
+}
+
+.add-node-button {
+  margin-left: 20px;
+}
+
+.remove-node-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
 }
 
 .stack-frame {
@@ -111,7 +132,7 @@
   justify-content: center;
 
   width: 50%;
-  height: 50%;
+  height: 30%;
 }
 
 .queue {
@@ -120,15 +141,19 @@
   align-items: center;
   justify-content: center;
 
-  width: 50%;
-  height: 100%;
+  width: 90%;
+  height: 65%;
 }
 
 .queue-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 15%;
+  height: 40%;
+
   background-color: #82AAE3;
   font-size: 1em;
-  width: 10%;
-  height: 30%;
-
   border-style: solid;
 }

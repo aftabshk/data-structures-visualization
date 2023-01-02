@@ -40,12 +40,12 @@ class QueueView extends Component {
 
         return <div className={"queue-container"}>
             {queue}
-            <div>
+            <div className={"buttons-container"}>
                 <div className={"add-node"}>
                     <input type="text" placeholder="Enter element" onChange={this.handleChange.bind(this)}/>
-                    <Button variant="primary" onClick={this.addToQueue.bind(this)} type="submit">Enqueue</Button>
+                    <Button className={"add-node-button"} variant="primary" onClick={this.addToQueue.bind(this)} type="submit">Enqueue</Button>
                 </div>
-                <Button variant="primary" onClick={this.removeFromQueue.bind(this)} type="submit">Dequeue</Button>
+                <Button className={"remove-node-button"} variant="primary" onClick={this.removeFromQueue.bind(this)} type="submit">Dequeue</Button>
             </div>
         </div>
     }
