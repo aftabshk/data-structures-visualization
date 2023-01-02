@@ -19,7 +19,10 @@ class Queue {
         for (let i = 0; i < this.tail; i++) {
             this.data[i] = this.data[i + 1];
         }
-        this.tail--;
+
+        if (this.tail !== -1) {
+            this.tail--;
+        }
         return result;
     }
 
