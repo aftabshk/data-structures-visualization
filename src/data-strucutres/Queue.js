@@ -9,6 +9,10 @@ class Queue {
         return this;
     }
 
+    length() {
+        return this.tail + 1;
+    }
+
     dequeue() {
         const result = this.data[0];
 

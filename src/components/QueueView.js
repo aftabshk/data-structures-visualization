@@ -2,6 +2,8 @@ import {Component} from "react";
 import Button from "react-bootstrap/Button";
 import Queue from "../data-strucutres/Queue";
 import QueueElementView from "./QueueElementView";
+import * as arrowLine from 'arrow-line';
+import * as d3 from "d3"
 
 class QueueView extends Component {
 
@@ -11,7 +13,18 @@ class QueueView extends Component {
     }
 
     componentDidMount() {
-        this.setState({queue: new Queue().enqueue(1).enqueue(2)});
+        this.setState({queue: new Queue().enqueue(1).enqueue(2).enqueue(3)});
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        d3
+            .selectAll("path")
+            .remove()
+
+        const length = this.state.queue.length();
+        if (length > 0) {
+            arrowLine("#element" + (length - 1), "#indicator")
+        }
     }
 
     handleChange(event) {
@@ -34,7 +47,17 @@ class QueueView extends Component {
 
         if (allElements.length !== 0) {
             queue = <div className={"queue"}>
-                {allElements.map((e) => <QueueElementView element={e}></QueueElementView>)}
+                {allElements.map((e, index) => {
+                    if (index === allElements.length - 1) {
+                        return <div className={"queue-last-element-container"}>
+                            <div className={"indicator"} id={"indicator"}>tail</div>
+                            <QueueElementView index={index} className={"queue-last-element"}
+                                              element={e}></QueueElementView>
+                        </div>
+                    }
+
+                    return <QueueElementView index={index} element={e}></QueueElementView>
+                })}
             </div>;
         }
 

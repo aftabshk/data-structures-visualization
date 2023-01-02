@@ -3,6 +3,7 @@ import {LinkedList, Node} from "../data-strucutres/LinkedList";
 import LinkedListNodeView from "./LinkedListNodeView";
 import Button from 'react-bootstrap/Button';
 import * as arrowLine from 'arrow-line';
+import * as d3 from "d3";
 
 class LinkedListView extends Component {
 
@@ -21,6 +22,10 @@ class LinkedListView extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        d3
+            .selectAll("path")
+            .remove()
+
         const length = this.state.linkedList.length();
         for (let i = 0; i < length - 1; i++) {
             arrowLine("#node" + i, "#node" + (i + 1));
